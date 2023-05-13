@@ -29,14 +29,50 @@ You can have another subclass like, “MobilePhones” and extend the ‘product
 # 2(a).Explain why accessor methods are necessary for the SalesPerson class. (3 points)
 
 * The variables are declared private and in order to access those variable accessor methods like getmethod() or setmethod() are necessary so that the variables can be accessed outside the class.
+# (e) Construct the method calcTotalSales(), in the SalesPerson class that calculates the total value of the sales for a specific SalesPerson object. (5 points)
+```
+   public double calcTotalSales() {
+        double total = 0;
+        for (int i = 0; i < count; i++) {
+            total = total + salesHistory[i].getTotal();
+        }
+        return total;
+    }
+```
+
 
 # Construct unified modelling language (UML) diagrams to clearly show the relationship between the SalesPerson and Sales classes.
 ![Alt text](UML.png)
 
 # Outline a negative effect that a future change in the design of the Sales object might have on this suite of programs. (2 points)
+ 
 
 * The Sales class is used in the  SalesPerson class, and any changes made in the Sales class will affect the SalesPerson class. For example, the method: calcTotalSales()in the  SalesPerson class fully depends on the Sales as it calculates the total sales which uses the method, getValue() and getQuantity() from the Sales class.
 
+# By making use of any previously written methods, construct the method highest(), that returns the ID of the salesperson whose sales have the largest total value. (5 points)
+ ``` 
+ Sales largestSale(){
+        Sales ls= salesHistory[0];
+        for(Sales salesvaluSales: salesHistory){
+            if(salesvaluSales.getTotal()>ls.getTotal()){
+                ls=salesvaluSales;
+            }
+    }
+    return ls;
+}
+```
+
+# Construct the method addSales(Sales s, String id), in the Driver class, that will add a new Sales object s, to the salesperson with a specified ID.
+ ```
+ public void addSales(Sales s, String id) {
+        for (SalesPerson addsales : salesPeople) {
+            if (addsales!=null&&addsales.getId().equals(id)) {
+                addsales.setSalesHistory(s);
+            }
+
+        }
+    }
+```
 # Suggest changes that must be made to the SalesPerson class and or the Sales class to allow these calculations to be made. (3 points)
 * In order to make the calculations monthly, annually or daily,  a date variable could be added in the Sales class. Since the date variable could be private, setters and getters for the variable will be required so that they can be accessed in the caltotal() method.
 

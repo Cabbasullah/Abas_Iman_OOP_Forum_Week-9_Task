@@ -1,6 +1,13 @@
 class Driver{
+  
     public static void main(String[] args) {
-        SalesPerson[] salesPeople = new SalesPerson[6];
+         SalesPerson[] salesPeople = new SalesPerson[6];
+       
+
+        
+       
+
+       
 
         salesPeople[0] = new SalesPerson("100");
         salesPeople[1] = new SalesPerson("101");
@@ -17,6 +24,19 @@ class Driver{
 
         
     }
+    
+    //re-declaration
+    SalesPerson[] salesPeople;
+    
+    public void addSales(Sales s, String id) {
+        for (SalesPerson addsales : salesPeople) {
+            if (addsales!=null&&addsales.getId().equals(id)) {
+                addsales.setSalesHistory(s);
+            }
+
+        }
+    }
+
 }
 
 class Sales{
